@@ -1,7 +1,9 @@
 import React from "react";
 import Image from "./components/Image";
 import api from "./utils/api";
-import "./components/input.css"
+import "./components/input.css";
+import "./components/background.css";
+import "./components/text.css";
 
 // var my_images = [
 //   { id: 0, alt:"bob", src: "https://vignette.wikia.nocookie.net/spongebobgalaxy/images/0/07/SpongeBob_SquarePants.png/revision/latest?cb=20171228024014" },
@@ -56,12 +58,13 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <div>{this.state.searchterm}</div>
+                <div><h1>Current word typed in: {this.state.searchterm} </h1></div>
+                <h3>To play the game enter a word for images, then click an image to gain a point. When an image is clicked twice you lose all points gained. Have Fun!</h3>
                 <div>
                     <input type="text" placeholder="Enter text for images" value={this.state.searchterm} onChange={this.searchGiphy} />
     
                 </div>
-                <div>Score: {this.state.score}</div>
+                <div><h4>Score: {this.state.score}</h4></div>
                 {this.state.images.map( (img) => ( 
                     <Image id={img.id} alt={img.slug} src={img.images.fixed_height_still.url} key={img.id} clickme={this.clickme} /> )
                 )}
